@@ -17,6 +17,7 @@ node 'ubuntumongo' {
         server_package_name => 'mongodb-org'
     } ->
     class {'::mongodb::server':
+        bind_ip => [ '0.0.0.0' ],
         journal => true
     }->
     class {'::mongodb::client': }
