@@ -36,5 +36,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             puppet.module_path      = 'modules'
             puppet.options          = ['--verbose']
         end
+
+        # Provision mongo instance with collections and data
+        ubuntumongo.vm.synced_folder "../conf", "/opt/fiazard/conf"
+        ubuntumongo.vm.provision :shell, :path => "init_mongodb.sh" 
     end
 end
